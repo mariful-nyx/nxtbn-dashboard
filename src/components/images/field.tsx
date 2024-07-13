@@ -101,27 +101,29 @@ const ImageField: React.FC<ImageFieldProps> = ({ label, name, onChange }) => {
                 <div>
                     <label htmlFor="media">Images</label>
                     {value.length !== 0 ? (
-                        <div className="flex gap-3 flex-wrap mt-3">
+                        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-3">
                             {value.map((imgData) => (
-                                <div
-                                    key={imgData.id}
-                                    className="h-[200px] w-[200px] rounded-md border border-base-300 flex justify-center items-center relative group"
-                                >
-                                    <img
-                                        src={imgData.image}
-                                        alt=""
-                                        className="absolute z-10 rounded-md"
-                                    />
-                                    <div className="absolute h-[200px] w-[200px] transition-all ease-linear rounded-md group-hover:bg-base-300 opacity-50 group-hover:z-20 hidden group-hover:block">
-                                        <div onClick={(e) => deleteImage(e, imgData.id)}>
-                                            <NXDelete className="h-[30px] w-[30px] rounded-md border border-red-600 bg-white p-1 absolute left-2 bottom-3 cursor-pointer" />
+                                    <div key={imgData.id}
+                                        className="aspect-w-1 aspect-h-1 box-border object-cover rounded-md border overflow-hidden flex flex-wrap justify-center items-center relative group"
+                                    >
+                                        <div className="aspect-square w-full h-full box-border flex justify-center items-center" >
+                                            <img
+                                                src={imgData.image}
+                                                alt=""
+                                                className="w-full h-full object-cover z-10"
+                                            />
+                                            
+                                        </div>
+                                        <div className="absolute h-full w-full transition-all ease-linear rounded-md group-hover:bg-base-300 opacity-50 group-hover:z-20 hidden group-hover:block">
+                                            <div onClick={(e) => deleteImage(e, imgData.id)}>
+                                                <NXDelete className="h-[30px] w-[30px] rounded-md border border-red-600 bg-white p-1 absolute left-2 bottom-3 cursor-pointer" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             ))}
                             <label
                                 htmlFor="media"
-                                className="h-[50px] w-[50px] rounded-md border-dashed border border-base-300 flex justify-center items-center cursor-pointer hover:bg-base-100"
+                                className="w-24 h-24 aspect-w-1 aspect-h-1 rounded-md border-dashed border border-base-300 flex justify-center items-center cursor-pointer hover:bg-base-100"
                             >
                                 +
                             </label>
